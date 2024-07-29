@@ -2,6 +2,8 @@ package com.it.client.rpcClient.impl;
 
 import com.it.client.netty.nettyInitializer.NettyClientInitializer;
 import com.it.client.rpcClient.RPCClient;
+import com.it.client.serviceCenter.ServiceCenter;
+import com.it.client.serviceCenter.impl.ZKServiceCenter;
 import com.it.common.message.RPCRequest;
 import com.it.common.message.RPCResponse;
 import io.netty.bootstrap.Bootstrap;
@@ -12,29 +14,34 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.util.AttributeKey;
 
+import java.net.InetSocketAddress;
+
 public class NettyRPCClient implements RPCClient {
-	private String host;
-	private int port;
+
 	private static final Bootstrap bootstrap;
 	private static final EventLoopGroup eventLoopGroup;
-	public NettyRPCClient(String host,int port){
-		this.host=host;
-		this.port=port;
+
+	private ServiceCenter serviceCenter;
+	public NettyRPCClient(){
+		this.serviceCenter=new ZKServiceCenter();
 	}
+
 	//netty客户端初始化
 	static {
 		eventLoopGroup = new NioEventLoopGroup();
 		bootstrap = new Bootstrap();
 		bootstrap.group(eventLoopGroup).channel(NioSocketChannel.class)
-				//NettyClientInitializer这里 配置netty对消息的处理机制
 				.handler(new NettyClientInitializer());
 	}
 	@Override
 	public RPCResponse sendRequest(RPCRequest request) {
+		//这里
+		//从注册中心获取host,post
+		InetSocketAddress address = serviceCenter.serviceDiscovery(request.getInterfaceName());
+		String host = address.getHostName();
+		int port = address.getPort();
 		try {
-			//创建一个channelFuture对象，代表这一个操作事件，sync方法表示堵塞直到connect完成
 			ChannelFuture channelFuture  = bootstrap.connect(host, port).sync();
-			//channel表示一个连接的单位，类似socket
 			Channel channel = channelFuture.channel();
 			// 发送数据
 			channel.writeAndFlush(request);
