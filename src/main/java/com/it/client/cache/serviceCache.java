@@ -32,14 +32,14 @@ public class serviceCache {
 			System.out.println("修改失败，服务不存在");
 		}
 	}
-	//从缓存中取服务地址
-	public  List<String> getServcieFromCache(String serviceName){
+	//从缓存中取服务地址列表
+	public List<String> getServiceListFromCache(String serviceName){
 		if(!cache.containsKey(serviceName)) {
 			return null;
 		}
-		List<String> a=cache.get(serviceName);
-		return a;
+		return cache.get(serviceName);
 	}
+
 	//从缓存中删除服务地址
 	public void delete(String serviceName,String address){
 		List<String> addressList = cache.get(serviceName);

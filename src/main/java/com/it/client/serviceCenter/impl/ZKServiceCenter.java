@@ -2,6 +2,7 @@ package com.it.client.serviceCenter.impl;
 
 import com.it.client.cache.serviceCache;
 import com.it.client.serviceCenter.ServiceCenter;
+import com.it.client.serviceCenter.banlance.impl.ConsistencyHashBalance;
 import com.it.client.serviceCenter.zkWatcher.watchZK;
 import org.apache.curator.RetryPolicy;
 import org.apache.curator.framework.CuratorFramework;
@@ -43,15 +44,15 @@ public class ZKServiceCenter implements ServiceCenter {
 	public InetSocketAddress serviceDiscovery(String serviceName) {
 		try {
 			//先从本地缓存中找
-			List<String> serviceList=cache.getServcieFromCache(serviceName);
+			List<String> serviceList=cache.getServiceListFromCache(serviceName);
 			//如果找不到，再去zookeeper中找
 			//这种i情况基本不会发生，或者说只会出现在初始化阶段
 			if(serviceList==null) {
 				serviceList=client.getChildren().forPath("/" + serviceName);
 			}
-			// 这里默认用的第一个，后面加负载均衡
-			String string = serviceList.get(0);
-			return parseAddress(string);
+			// 负载均衡得到地址
+			String address = new ConsistencyHashBalance().balance(serviceList);
+			return parseAddress(address);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
