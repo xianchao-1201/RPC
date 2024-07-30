@@ -22,7 +22,7 @@ public class NettyRPCClient implements RPCClient {
 	private static final EventLoopGroup eventLoopGroup;
 
 	private ServiceCenter serviceCenter;
-	public NettyRPCClient(){
+	public NettyRPCClient() throws InterruptedException {
 		this.serviceCenter=new ZKServiceCenter();
 	}
 
