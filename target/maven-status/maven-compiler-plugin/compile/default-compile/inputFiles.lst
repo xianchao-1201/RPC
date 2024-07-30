@@ -1,4 +1,6 @@
 C:\Users\DELL\Desktop\RPC\src\main\java\com\it\server\rpcServer\impl\NettyRPCServer.java
+C:\Users\DELL\Desktop\RPC\src\main\java\com\it\common\serializer\mySerializer\JsonSerializer.java
+C:\Users\DELL\Desktop\RPC\src\main\java\com\it\common\serializer\mySerializer\Serializer.java
 C:\Users\DELL\Desktop\RPC\src\main\java\com\it\server\serviceRegister\impl\ZKServiceRegister.java
 C:\Users\DELL\Desktop\RPC\src\main\java\com\it\client\rpcClient\RPCClient.java
 C:\Users\DELL\Desktop\RPC\src\main\java\com\it\client\rpcClient\impl\SimpleSocketRPCClient.java
@@ -12,14 +14,18 @@ C:\Users\DELL\Desktop\RPC\src\main\java\com\it\client\rpcClient\impl\NettyRPCCli
 C:\Users\DELL\Desktop\RPC\src\main\java\com\it\server\provider\ServiceProvider.java
 C:\Users\DELL\Desktop\RPC\src\main\java\com\it\client\serviceCenter\impl\ZKServiceCenter.java
 C:\Users\DELL\Desktop\RPC\src\main\java\com\it\common\pojo\User.java
+C:\Users\DELL\Desktop\RPC\src\main\java\com\it\common\serializer\mySerializer\ObjectSerializer.java
 C:\Users\DELL\Desktop\RPC\src\main\java\com\it\common\message\RPCResponse.java
+C:\Users\DELL\Desktop\RPC\src\main\java\com\it\common\serializer\myCode\MyEnCoder.java
 C:\Users\DELL\Desktop\RPC\src\main\java\com\it\server\netty\nettyInitializer\NettyServerInitializer.java
 C:\Users\DELL\Desktop\RPC\src\main\java\com\it\server\TestServer.java
+C:\Users\DELL\Desktop\RPC\src\main\java\com\it\common\message\MessageType.java
 C:\Users\DELL\Desktop\RPC\src\main\java\com\it\client\netty\nettyInitializer\NettyClientInitializer.java
 C:\Users\DELL\Desktop\RPC\src\main\java\com\it\common\service\impl\UserServiceImpl.java
 C:\Users\DELL\Desktop\RPC\src\main\java\com\it\common\message\RPCRequest.java
 C:\Users\DELL\Desktop\RPC\src\main\java\com\it\client\proxy\ClientProxy.java
 C:\Users\DELL\Desktop\RPC\src\main\java\com\it\client\serviceCenter\ServiceCenter.java
+C:\Users\DELL\Desktop\RPC\src\main\java\com\it\common\serializer\myCode\MyDeCoder.java
 C:\Users\DELL\Desktop\RPC\src\main\java\com\it\client\netty\handler\NettyClientHandler.java
 C:\Users\DELL\Desktop\RPC\src\main\java\com\it\server\rpcServer\impl\ThreadPoolRPCServer.java
 C:\Users\DELL\Desktop\RPC\src\main\java\com\it\server\rpcServer\work\WorkThread.java
