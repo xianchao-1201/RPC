@@ -22,8 +22,8 @@ public class NettyRPCClient implements RPCClient {
 	private static final EventLoopGroup eventLoopGroup;
 
 	private ServiceCenter serviceCenter;
-	public NettyRPCClient() throws InterruptedException {
-		this.serviceCenter=new ZKServiceCenter();
+	public NettyRPCClient(ServiceCenter serviceCenter) throws InterruptedException {
+		this.serviceCenter=serviceCenter;
 	}
 
 	//netty客户端初始化
@@ -35,7 +35,6 @@ public class NettyRPCClient implements RPCClient {
 	}
 	@Override
 	public RPCResponse sendRequest(RPCRequest request) {
-		//这里
 		//从注册中心获取host,post
 		InetSocketAddress address = serviceCenter.serviceDiscovery(request.getInterfaceName());
 		String host = address.getHostName();
